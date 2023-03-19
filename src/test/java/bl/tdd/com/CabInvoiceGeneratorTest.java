@@ -30,15 +30,17 @@ public class CabInvoiceGeneratorTest {
 		Assertions.assertEquals(5,fare,0.0); //delta is for remove extra point values
 	}
 
-	@Test
-	public void givenMultipleRide_ShouldReturnInvoiceSummary(){
+	  @Test
+	    public void givenMultipleRide_ShouldReturnInvoiceSummary(){
 
-		Ride[] rides = { new Ride(2.0, 5),
-				new Ride(0.1, 1)};
+	        Ride[] rides = { new Ride(2.0, 5),
+	                         new Ride(0.1, 1)};
 
-		double fare = invoiceGenerator.calculateFare(rides);
-		Assertions.assertEquals(30,fare,0.0);
+	        InvoiceSummary summary  = invoiceGenerator.calculateFare(rides);
+	        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+	        Assertions.assertEquals(expectedInvoiceSummary, summary);
 
-	}
+	    }
+
 
 }
